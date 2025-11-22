@@ -1,4 +1,4 @@
-# Sistema de Gerenciamento de Tarefas em Python com Oracle
+# Sistema de Gerenciamento de Tarefas em Python com MongoDB
 
 Este sistema foi desenvolvido como atividade acadêmica da disciplina de **Banco de Dados**.  
 O projeto implementa um **sistema de gerenciamento de tarefas e usuários**, permitindo realizar operações CRUD (Create, Read, Update, Delete) integradas ao Banco de Dados Oracle.
