@@ -1,40 +1,27 @@
+# main.py
 from config import MENUS
 from src.utils.splash_screen import SplashScreen
 from src.controller.controller_usuario import ControllerUsuario
 from src.controller.controller_tarefa import ControllerTarefa
 from src.reports.relatorios import Relatorio
-from src.conexion.oracle_queries import OracleQueries
+from src.conexion.mongo_queries import MongoQueries
 
 # Conexão única
-oracle = OracleQueries(can_write=True)
-oracle.connect()
+mongo = MongoQueries(can_write=True)
+mongo.connect()
 
 # Instanciando controllers e relatórios com a mesma conexão
 tela_inicial = SplashScreen()
-ctrl_usuario = ControllerUsuario(oracle)
-ctrl_tarefa = ControllerTarefa(oracle)
-relatorio = Relatorio(oracle)  # ajuste necessário em relatorios.py para receber oracle
+ctrl_usuario = ControllerUsuario(mongo)
+ctrl_tarefa = ControllerTarefa(mongo)
+relatorio = Relatorio(mongo)
 
 def exibir_contagem():
-    """Exibe a contagem de registros das tabelas"""
-    total_usuarios = oracle.sqlToMatrix("SELECT COUNT(1) FROM USUARIOS")[0][0]
-    total_tarefas = oracle.sqlToMatrix("SELECT COUNT(1) FROM TAREFAS")[0][0]
+    """Exibe a contagem de registros das coleções"""
+    total_usuarios = mongo.count("usuarios")
+    total_tarefas = mongo.count("tarefas")
     print(f"Total de Usuários: {total_usuarios}")
     print(f"Total de Tarefas: {total_tarefas}")
-
-def listar_usuarios():
-    """Lista os usuários e retorna os IDs"""
-    usuarios = oracle.sqlToMatrix("SELECT ID_USUARIO, NOME FROM USUARIOS ORDER BY ID_USUARIO")
-    for u in usuarios:
-        print(f"{u[0]} - {u[1]}")
-    return [u[0] for u in usuarios]
-
-def listar_tarefas():
-    """Lista as tarefas e retorna os IDs"""
-    tarefas = oracle.sqlToMatrix("SELECT ID_TAREFA, TITULO FROM TAREFAS ORDER BY ID_TAREFA")
-    for t in tarefas:
-        print(f"{t[0]} - {t[1]}")
-    return [t[0] for t in tarefas]
 
 def confirmar_acao(msg: str) -> bool:
     """Pergunta ao usuário se deseja confirmar a ação"""
@@ -55,7 +42,7 @@ def run():
         # ---------- RELATÓRIOS ----------
         if opcao == 1:
             print(MENUS["relatorios"])
-            opc_rel = input("Escolha relatório: ").strip()
+            opc_rel = input("Escolha o relatório: ").strip()
             if opc_rel == "1":
                 relatorio.rel_usuarios()
             elif opc_rel == "2":
@@ -71,7 +58,7 @@ def run():
         elif opcao == 2:
             while True:
                 print(MENUS["entidades"])
-                inserir_op = input("Escolha entidade: ").strip()
+                inserir_op = input("Escolha uma opção: ").strip()
                 if inserir_op == "1":
                     ctrl_usuario.inserir()
                 elif inserir_op == "2":
@@ -85,12 +72,10 @@ def run():
         elif opcao == 3:
             while True:
                 print(MENUS["entidades"])
-                atualizar_op = input("Escolha entidade: ").strip()
+                atualizar_op = input("Escolha uma opção: ").strip()
                 if atualizar_op == "1":
-                    listar_usuarios()
                     ctrl_usuario.atualizar()
                 elif atualizar_op == "2":
-                    listar_tarefas()
                     ctrl_tarefa.atualizar()
                 elif atualizar_op == "0":
                     break
@@ -101,15 +86,11 @@ def run():
         elif opcao == 4:
             while True:
                 print(MENUS["entidades"])
-                excluir_op = input("Escolha entidade: ").strip()
+                excluir_op = input("Escolha uma opção: ").strip()
                 if excluir_op == "1":
-                    listar_usuarios()
-                    if confirmar_acao("Deseja realmente excluir este usuário?"):
-                        ctrl_usuario.excluir()
+                    ctrl_usuario.excluir()
                 elif excluir_op == "2":
-                    listar_tarefas()
-                    if confirmar_acao("Deseja realmente excluir esta tarefa?"):
-                        ctrl_tarefa.excluir()
+                    ctrl_tarefa.excluir()
                 elif excluir_op == "0":
                     break
                 else:
@@ -125,4 +106,3 @@ def run():
 
 if __name__ == "__main__":
     run()
-
