@@ -1,0 +1,4 @@
+-- Relatório: total de tarefas por usuário
+SELECT USUARIO_TAREFA, COUNT(*) AS TOTAL_TAREFAS
+FROM TAREFAS
+GROUP BY USUARIO_TAREFA;
