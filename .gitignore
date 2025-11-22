@@ -1,0 +1,10 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Arquivos de configuração de IDE
+.vscode/
+.idea/
+
+# Arquivos de sistema
+.DS_Store
