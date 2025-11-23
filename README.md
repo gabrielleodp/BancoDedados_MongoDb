@@ -5,7 +5,7 @@ O projeto implementa um **sistema de gerenciamento de tarefas e usuários**, per
 
 O sistema foi construído utilizando o **padrão MVC (Model-View-Controller)**, com separação clara entre as camadas de modelo, controle e visualização.
 
-- [Vídeo da execução](https://www.youtube.com/watch?v=8sFr8z8dwXo)
+- [Vídeo da execução](https://youtu.be/jko6wv0xlxk)
 
 ## É necessário já ter pré-instalado:
 - Python 3.8 ou superior, verifique se já está instalado:
