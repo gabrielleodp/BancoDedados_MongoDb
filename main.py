@@ -101,8 +101,9 @@ def run():
             print("Saindo do sistema. Obrigado!")
             break
 
-        # Atualiza contagem após cada operação
+        # Atualiza contagem após cada situação
         exibir_contagem()
 
 if __name__ == "__main__":
     run()
+
