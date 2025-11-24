@@ -94,7 +94,8 @@ class ControllerTarefa:
                 return
             confirm = input("Deseja realmente excluir? (S/N): ").strip().upper()
             if confirm == "S":
-                self.mongo.delete_one_by_field("tarefas", "id_tarefa", id_tarefa)
+                self.mongo.delete_one_by_field("tarefas", "id_tarefa",)
                 print("Tarefa excluída com sucesso!")
         except Exception as e:
             print("Erro ao excluir tarefa:", e)
+
