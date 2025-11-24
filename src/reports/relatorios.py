@@ -52,5 +52,6 @@ class Relatorio:
         print("-" * 40)
 
     def rel_tarefas_join(self):
-        # Mesmo que rel_tarefas (JOIN demonstrativo)
+        # Mesmo que rel_tarefas (JOIN)
         self.rel_tarefas()
+
