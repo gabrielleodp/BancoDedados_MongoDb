@@ -61,7 +61,7 @@ pip install -r requirements.txt
 - Clonar do GitHub ou baixar o zip e extrair.
 
 **2.	Abrir o terminal na pasta do projeto:**
-- Ex.: ~/ProjetoBancoDeDados
+- Ex.: ~/ProjetoBancoDeDados_MongoDb
 
 **3.	Criar um ambiente virtual (opcional, mas recomendado):**
 ```bash 
@@ -86,7 +86,7 @@ pip install -r requirements.txt
 **5.	Criar as tabelas e inserir os dados de exemplo:**
 - No terminal, volte para o caminho do projeto:
 ```bash
-cd ~/ProjetoBancoDeDados
+cd ~/ProjetoBancoDeDados_MongoDb
 ```
 - Insira o comando: 
 ```bash
@@ -96,7 +96,7 @@ python create_collections_and_import.py
 **6.	Rodar o programa:**
 - No terminal, dentro do ambiente virtual e da pasta do projeto, que deve mostrar:
 
- (venv_proj) labdatabase@lab-database-class:~/ProjetoBancoDeDados$ 
+ (venv_proj) labdatabase@lab-database-class:~/ProjetoBancoDeDados_MongoDb$ 
 - Digite: 
 ```bash
 python main.py
@@ -129,8 +129,8 @@ deactivate
 - Listar tarefas  
 
 ### Relatórios
-- **Relatório de Tarefas por Usuário (GROUP BY)**  
-- **Relatório Detalhado de Tarefas (JOIN)** 
+- **Relatório de Tarefas por Usuário**  
+- **Relatório Detalhado de Tarefas** 
 
 __________________________________
 
