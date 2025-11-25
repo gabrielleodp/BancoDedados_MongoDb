@@ -1,7 +1,7 @@
 # Sistema de Gerenciamento de Tarefas em Python com MongoDB #
 
 Este sistema foi desenvolvido como atividade acadêmica da disciplina de **Banco de Dados**.  
-O projeto implementa um **sistema de gerenciamento de tarefas e usuários**, permitindo realizar operações CRUD (Create, Read, Update, Delete) integradas ao Banco de Dados Oracle.
+O projeto implementa um **sistema de gerenciamento de tarefas e usuários**, permitindo realizar operações CRUD (Create, Read, Update, Delete) integradas ao Banco de Dados MongoDB.
 
 O sistema foi construído utilizando o **padrão MVC (Model-View-Controller)**, com separação clara entre as camadas de modelo, controle e visualização.
 
@@ -29,22 +29,13 @@ O sistema possui as entidades: **USUÁRIOS** e **TAREFAS**.
 
 ---
 
-**sql:** scripts SQL utilizados para criar as tabelas e inserir dados fictícios.  
-- create_tables.sql → criação das tabelas e sequencias.  
-- insert_tarefas.sql → inserção de registros de exemplo.  
-- insert_usuarios.sql → inserção de registros de exemplo.  
-- relatorio_group_by.sql → relatório agrupado por usuário
-- relatorio_join.sql → relatório detalhado com JOIN
-
----
-
 **src:** código-fonte do sistema.  
 - conexion/ → módulo de conexão com o Oracle (oracle_queries.py).  
 - controller/ → classes responsáveis por inserir, alterar e excluir registros.  
 - model/ → classes que representam as entidades do sistema (Usuário e Tarefa).  
 - reports/ → módulo relatorios.py responsável por gerar relatórios.  
 - utils/ → scripts auxiliares, como config.py e splash_screen.py.  
-- create_tables_and_records.py → cria tabelas e insere registros de exemplo.  
+- create_collections_and_import.py → cria tabelas e insere registros de exemplo.  
 
 ---
 
@@ -92,30 +83,17 @@ venv_proj\Scripts\activate
 pip install -r requirements.txt
 ```
 
-**5.	Configurar conexão Oracle:**
-- Certifique-se que o Oracle está rodando (ex.: via container)
-- primeiro vá para o caminho do docker
-```bash
-cd /home/labdatabase/database_services
-```
-- Suba/inicie o Oracle:
-```bash
-docker compose up -d
-```
-- O arquivo src/conexion/passphrase/authentication.oracle já contém o usuário e senha.
-- Não é necessário criar nada manualmente no DBeaver.
-
-**6.	Criar as tabelas e inserir os dados de exemplo:**
+**5.	Criar as tabelas e inserir os dados de exemplo:**
 - No terminal, volte para o caminho do projeto:
 ```bash
 cd ~/ProjetoBancoDeDados
 ```
 - Insira o comando: 
 ```bash
-python create_tables_and_records.py
+python create_collections_and_import.py
 ```
 
-**7.	Rodar o programa:**
+**6.	Rodar o programa:**
 - No terminal, dentro do ambiente virtual e da pasta do projeto, que deve mostrar:
 
  (venv_proj) labdatabase@lab-database-class:~/ProjetoBancoDeDados$ 
@@ -124,10 +102,10 @@ python create_tables_and_records.py
 python main.py
 ```
 
-**8.	Usar o sistema:**
+**7.	Usar o sistema:**
 - Siga os menus no terminal para inserir usuários ou tarefas, excluir/atualizar dados, consultar registros e gerar relatórios.
 
-**9.	Encerrar:**
+**8.	Encerrar:**
 - Digite a opção de sair no menu principal.
 - Se estiver usando ambiente virtual, desative-o digitando: 
 ```bash
